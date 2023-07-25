@@ -15,7 +15,7 @@ import java.io.IOException;
 public class S3Service implements IS3Service {
     private final S3Client s3Client;
 
-    private String bucketName = "test";
+    private static final String BUCKET_NAME = "almacen-pruebas-super-app";
 
     @Autowired
     public S3Service(S3Client s3Client) {
@@ -25,7 +25,7 @@ public class S3Service implements IS3Service {
     public void uploadFile(MultipartFile file){
         try {
             PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-                    .bucket(bucketName)
+                    .bucket(BUCKET_NAME)
                     .key(file.getOriginalFilename())
                     .contentType(file.getContentType())
                     .build();
